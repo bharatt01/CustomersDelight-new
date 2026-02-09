@@ -67,7 +67,7 @@ const DigitalPresence = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding pt-32 md:pt-40">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -161,7 +161,7 @@ const DigitalPresence = () => {
       </section>
 
       {/* Trust Elements Grid */}
-      <section className="section-padding bg-secondary/30">
+      <section className="section-padding bg-secondary/30  pt-12 pb-10">
         <div className="container-wide">
           <SectionHeading
             tag="Core Elements"
@@ -200,7 +200,7 @@ const DigitalPresence = () => {
       </section>
 
       {/* Checklist Section */}
-      <section className="section-padding">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
@@ -260,7 +260,7 @@ const DigitalPresence = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-primary text-primary-foreground">
+      <section className="section-padding bg-primary text-primary-foreground  pt-12 pb-10">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span
@@ -307,7 +307,7 @@ const DigitalPresence = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-narrow text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

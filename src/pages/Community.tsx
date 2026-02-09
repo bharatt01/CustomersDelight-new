@@ -68,7 +68,9 @@ const Community = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding pt-32 md:pt-40">
+<section className="section-padding pt-4 md:pt-8 pb-8 md:pb-12">
+
+
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -195,7 +197,8 @@ const Community = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding bg-secondary/30">
+    <section className="section-padding bg-secondary/30 pt-6 md:pt-10 pb-10 md:pb-14">
+
         <div className="container-wide">
           <SectionHeading
             tag="Why Community"
@@ -218,7 +221,8 @@ const Community = () => {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding">
+  <section className="section-padding py-12 bg-secondary/30">
+
         <div className="container-wide">
           <SectionHeading
             tag="The Process"
@@ -269,7 +273,8 @@ const Community = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-primary text-primary-foreground">
+<section className="section-padding pt-12 pb-12 bg-primary text-primary-foreground">
+
         <div className="container-narrow text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

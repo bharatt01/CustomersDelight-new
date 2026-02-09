@@ -101,7 +101,7 @@ const LoyaltySystems = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding pt-32 md:pt-40">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-wide">
           <div className="max-w-4xl mx-auto text-center">
             <motion.span
@@ -153,7 +153,7 @@ const LoyaltySystems = () => {
       </section>
 
       {/* Reward Types */}
-      <section className="section-padding bg-secondary/30">
+      <section className="section-padding bg-secondary/30  pt-12 pb-10">
         <div className="container-wide">
           <SectionHeading
             tag="Reward Types"
@@ -186,7 +186,7 @@ const LoyaltySystems = () => {
       </section>
 
       {/* Program Comparison */}
-      <section className="section-padding">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-wide">
           <SectionHeading
             tag="Program Types"
@@ -244,7 +244,7 @@ const LoyaltySystems = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding bg-primary text-primary-foreground">
+      <section className="section-padding  pt-12 pb-10 bg-primary text-primary-foreground">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span
@@ -298,7 +298,7 @@ const LoyaltySystems = () => {
       </section>
 
       {/* Win-Win Section */}
-      <section className="section-padding">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Customer Benefits */}
@@ -361,7 +361,7 @@ const LoyaltySystems = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-secondary/30">
+      <section className="section-padding  pt-12 pb-10 bg-secondary/30">
         <div className="container-narrow text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

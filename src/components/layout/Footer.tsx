@@ -19,16 +19,17 @@ const footerLinks = {
 export const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container-wide section-padding">
+<div className="container-wide section-padding pt-12 pb-10">
+
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg">G</span>
+              <div className="w-10 h-10 rounded-xl  flex items-center justify-center">
+               <img src="/favicon.png" alt="" />
               </div>
-              <span className="font-bold text-xl">GrowthOS</span>
+              <span className="font-bold text-xl">CustomerDelight</span>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-xs">
               Helping local businesses build lasting customer relationships and sustainable growth.

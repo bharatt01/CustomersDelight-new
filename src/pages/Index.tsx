@@ -67,6 +67,8 @@ const processSteps = [
   },
 ];
 
+
+
 const Index = () => {
   return (
     <>
@@ -76,33 +78,50 @@ const Index = () => {
 
     {/* LEFT SIDE – Floating Rounded Image */}
     <div className="w-full lg:w-1/2 flex justify-center relative">
-      <motion.div
-        animate={{ y: [0, -15, 0] }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="relative"
-      >
+   <motion.div
+  animate={{
+    rotateY: [0, 360],
+    y: [0, -15, 0],
+  }}
+  transition={{
+    rotateY: {
+      duration: 0.4,      // fast flip
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatDelay: 5,     // wait 5s before next flip
+    },
+    y: {
+      duration: 4,
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  }}
+  style={{
+    transformStyle: "preserve-3d",
+    perspective: 1200,
+  }}
+  className="relative"
+>
+
         {/* Amber Glow */}
-        <div className="absolute inset-0 rounded-[2.5rem] bg-amber-300/30 blur-3xl -z-10" />
+          {/* Amber Glow */}
+  <div className="absolute inset-0 rounded-[2.5rem] bg-amber-300/30 blur-3xl -z-10" />
 
-        {/* Image */}
-        <img
-          src="/Images/hero.png"
-          alt="Retail Shop System"
-          className="
-            w-[320px] md:w-[420px] lg:w-[480px]
-            rounded-[2.5rem]
-            border-[6px] border-amber-500
-            shadow-xl
-            object-cover
-          "
-        />
-      </motion.div>
+  {/* Image */}
+  <img
+    src="/Images/hero.png"
+    alt="Retail Shop System"
+    className="
+      w-[320px] md:w-[420px] lg:w-[480px]
+      rounded-[2.5rem]
+      border-[6px] border-amber-500
+      shadow-xl
+      object-cover
+    "
+  />
+</motion.div>
     </div>
-
     {/* RIGHT SIDE – Text Content */}
     <div className="w-full lg:w-1/2">
 
@@ -118,12 +137,20 @@ const Index = () => {
       </div>
 
       {/* Heading */}
-      <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-        Turn Every Walk-In <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-700">
-          into a Loyal Customer
-        </span>
-      </h1>
+      <div className="mb-8">
+  <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.05] tracking-tight">
+    Turn Every Walk-In
+  </h1>
+
+  <div className="relative inline-block mt-3">
+    <span className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-700">
+      into a Loyal Customer
+    </span>
+
+    {/* Accent underline */}
+    <span className="absolute -bottom-2 left-0 w-1/3 h-[5px] rounded-full bg-amber-500" />
+  </div>
+</div>
 
       {/* Description */}
       <p className="text-slate-600 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-medium">

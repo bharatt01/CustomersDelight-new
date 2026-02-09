@@ -31,10 +31,10 @@ const Navbar = () => {
         <nav className="container-wide h-20 flex items-center justify-between relative">
           {/* LOGO */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center shadow-md">
-              <span className="text-amber-500 font-bold text-lg">G</span>
+            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-md">
+              <img src="/favicon.png" alt="" />
             </div>
-            <span className="font-bold text-black text-2xl tracking-wide">GrowthOS</span>
+            <span className="font-bold text-white text-2xl tracking-wide">CustomerDelight</span>
           </Link>
 
           {/* DESKTOP NAV */}

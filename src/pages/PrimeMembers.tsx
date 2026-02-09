@@ -116,7 +116,8 @@ const PrimeMembers = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding pt-32 md:pt-40">
+<section className="section-padding pt-18 pb-16 md:pt-24 md:pb-20">
+
         <div className="container-wide">
           <div className="max-w-4xl mx-auto text-center">
             <motion.span
@@ -169,8 +170,9 @@ const PrimeMembers = () => {
       </section>
 
       {/* Membership Tiers */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container-wide">
+      <section className="section-padding  pt-12 pb-10 bg-secondary/30">
+   <div className="container-wide">
+
           <SectionHeading
             tag="Membership Tiers"
             title="Design Your Membership Structure"
@@ -235,7 +237,7 @@ const PrimeMembers = () => {
       </section>
 
       {/* Conversion Journey */}
-      <section className="section-padding">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-wide">
           <SectionHeading
             tag="The Journey"
@@ -273,7 +275,7 @@ const PrimeMembers = () => {
       </section>
 
       {/* Benefits Grid */}
-      <section className="section-padding bg-primary text-primary-foreground">
+      <section className="section-padding  pt-12 pb-10 bg-primary text-primary-foreground">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span
@@ -327,7 +329,7 @@ const PrimeMembers = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding">
+      <section className="section-padding  pt-12 pb-10">
         <div className="container-narrow text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
