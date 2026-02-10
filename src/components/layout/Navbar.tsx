@@ -34,7 +34,7 @@ const Navbar = () => {
             <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-md">
               <img src="/favicon.png" alt="" />
             </div>
-            <span className="font-bold text-white text-2xl tracking-wide">CustomerDelight</span>
+            <span className="font-bold text-white text-2xl tracking-wide">CustomersDelight</span>
           </Link>
 
           {/* DESKTOP NAV */}
