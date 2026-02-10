@@ -37,15 +37,16 @@ export const Footer = () => {
             <div className="flex flex-col gap-3 text-sm text-primary-foreground/70">
               <a href="mailto:hello@growthos.com" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
                 <Mail className="w-4 h-4" />
-                hello@growthos.com
+                info@customersdelight.com
               </a>
               <a href="tel:+1234567890" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
                 <Phone className="w-4 h-4" />
-                +1 (234) 567-890
+                +91 9871418686
               </a>
               <span className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                San Francisco, CA
+      171, Sector-22, Faridabad
+Haryana, India 121005
               </span>
             </div>
           </div>
@@ -115,7 +116,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/50">
-          <p>© {new Date().getFullYear()} GrowthOS. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} CustomerDelight. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="hover:text-primary-foreground transition-colors">
               Privacy Policy

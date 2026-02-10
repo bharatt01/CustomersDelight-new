@@ -12,8 +12,8 @@ import { useGLTF, Center, Environment } from '@react-three/drei'
 import { TextureLoader } from "three"
 import * as THREE from "three"
 // The Building Shell
-
-
+import { useAnimationControls } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const features = [
   {
@@ -69,119 +69,164 @@ const processSteps = [
 
 
 
+
 const Index = () => {
+  const images = [
+    "/Images/hero.png",
+    "/Images/hero2.png",
+    "/Images/hero3.png",
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+  const controls = useAnimationControls();
+
+  useEffect(() => {
+    let mounted = true;
+
+    const runFlip = async () => {
+      while (mounted) {
+        // 1️⃣ First half flip
+        await controls.start({
+          rotateY: 180,
+          transition: { duration: 0.2, ease: "easeIn" },
+        });
+
+        // 🔥 CHANGE IMAGE EXACTLY AT FLIP
+        setCurrentImage((prev) => (prev + 1) % images.length);
+
+        // 2️⃣ Second half flip
+        await controls.start({
+          rotateY: 360,
+          transition: { duration: 0.2, ease: "easeOut" },
+        });
+
+        // Reset rotation (so it doesn't accumulate)
+        controls.set({ rotateY: 0 });
+
+        // ⏸️ Wait 5 seconds before next flip
+        await new Promise((res) => setTimeout(res, 5000));
+      }
+    };
+
+    runFlip();
+    return () => {
+      mounted = false;
+    };
+  }, [controls, images.length]);
+
+  
   return (
     <>
-<section className="relative min-h-[85vh] flex items-start pt-28 -mt-16 bg-[#fafaf9] overflow-hidden">
 
-  <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+        <section className="relative min-h-[85vh] flex items-start pt-28 -mt-16 bg-[#fafaf9] overflow-hidden">
+      <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
 
-    {/* LEFT SIDE – Floating Rounded Image */}
-    <div className="w-full lg:w-1/2 flex justify-center relative">
-   <motion.div
-  animate={{
-    rotateY: [0, 360],
-    y: [0, -15, 0],
-  }}
-  transition={{
-    rotateY: {
-      duration: 0.4,      // fast flip
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatDelay: 5,     // wait 5s before next flip
-    },
-    y: {
-      duration: 4,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "mirror",
-    },
-  }}
-  style={{
-    transformStyle: "preserve-3d",
-    perspective: 1200,
-  }}
-  className="relative"
->
-
-        {/* Amber Glow */}
-          {/* Amber Glow */}
-  <div className="absolute inset-0 rounded-[2.5rem] bg-amber-300/30 blur-3xl -z-10" />
-
-  {/* Image */}
-  <img
-    src="/Images/hero.png"
-    alt="Retail Shop System"
-    className="
-      w-[320px] md:w-[420px] lg:w-[480px]
-      rounded-[2.5rem]
-      border-[6px] border-amber-500
-      shadow-xl
-      object-cover
-    "
-  />
-</motion.div>
-    </div>
-    {/* RIGHT SIDE – Text Content */}
-    <div className="w-full lg:w-1/2">
-
-      {/* Badge */}
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/50 mb-6">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-600"></span>
-        </span>
-        <h2 className="text-amber-800 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">
-          Retail Shop Owners
-        </h2>
-      </div>
-
-      {/* Heading */}
-      <div className="mb-8">
-  <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.05] tracking-tight">
-    Turn Every Walk-In
-  </h1>
-
-  <div className="relative inline-block mt-3">
-    <span className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-700">
-      into a Loyal Customer
-    </span>
-
-    {/* Accent underline */}
-    <span className="absolute -bottom-2 left-0 w-1/3 h-[5px] rounded-full bg-amber-500" />
-  </div>
-</div>
-
-      {/* Description */}
-      <p className="text-slate-600 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-medium">
-        We bridge the gap between your physical storefront and digital retention.
-        Smart, modern systems built for boutique and retail brands.
-      </p>
-
-      {/* CTA */}
-      <div className="flex flex-wrap gap-5">
-        <button className="bg-amber-600 text-amber-50 px-10 py-4 rounded-full font-extrabold shadow-lg shadow-amber-900/20 hover:bg-amber-950 hover:-translate-y-1 transition-all duration-300">
-          Get Started Now
-        </button>
-
-        <button className="group flex items-center gap-2 px-6 py-4 text-slate-900 font-bold hover:text-amber-900 transition-colors">
-          <span>View Demo</span>
-          <svg
-            className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* LEFT SIDE */}
+        <div className="w-full lg:w-1/2 flex justify-center relative">
+          <motion.div
+            animate={controls}
+            initial={{ rotateY: 0 }}
+            style={{
+              transformStyle: "preserve-3d",
+              perspective: 1200,
+            }}
+            className="relative"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </button>
+            {/* Glow */}
+            <div className="absolute inset-0 rounded-[2.5rem] bg-amber-300/30 blur-3xl -z-10" />
+
+            {/* Image */}
+            <motion.img
+              key={currentImage}
+              src={images[currentImage]}
+              alt="Retail Shop System"
+              className="
+                w-[320px] md:w-[420px] lg:w-[480px]
+                rounded-[2.5rem]
+                border-[6px] border-amber-500
+                shadow-xl
+                object-cover
+              "
+              style={{
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+              }}
+              animate={{ y: [0, -15, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </motion.div>
+        </div>
+
+
+        {/* RIGHT SIDE – Text Content */}
+        <div className="w-full lg:w-1/2">
+
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/50 mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-600"></span>
+            </span>
+            <h2 className="text-amber-800 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">
+              Retail Shop Owners
+            </h2>
+          </div>
+
+          {/* Heading */}
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.05] tracking-tight">
+              Turn Every Walk-In
+            </h1>
+
+            <div className="relative inline-block mt-3">
+              <span className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-700">
+                into a Loyal Customer
+              </span>
+              <span className="absolute -bottom-2 left-0 w-1/3 h-[5px] rounded-full bg-amber-500" />
+            </div>
+          </div>
+
+          {/* Description */}
+          <p className="text-slate-600 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-medium">
+            We bridge the gap between your physical storefront and digital retention.
+            Smart, modern systems built for boutique and retail brands.
+          </p>
+
+          {/* CTA */}
+          <div className="flex flex-wrap gap-5">
+            <button className="bg-amber-600 text-amber-50 px-10 py-4 rounded-full font-extrabold shadow-lg shadow-amber-900/20 hover:bg-amber-950 hover:-translate-y-1 transition-all duration-300">
+              Get Started Now
+            </button>
+
+            <button className="group flex items-center gap-2 px-6 py-4 text-slate-900 font-bold hover:text-amber-900 transition-colors">
+              <span>View Demo</span>
+              <svg
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </button>
+          </div>
+
+        </div>
       </div>
 
-    </div>
-  </div>
-  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-amber-500/70 to-transparent blur-[0.5px]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-amber-500/70 to-transparent blur-[0.5px]" />
+    </section>
 
-</section>
+
 
 {/* Features Section */}
 <section className="relative pt-14 pb-28 bg-[#fafaf9] overflow-hidden">
