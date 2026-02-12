@@ -14,6 +14,14 @@ import * as THREE from "three"
 // The Building Shell
 import { useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
+// import OwnerBenefits from '@/components/ui/OwnerBenefits';
+import HeroSection from '@/components/ui/OurWorkHero';
+import AssociateWithUs from '@/components/ui/AssociateWithUs';
+import NumberSpeaksLouder from '@/components/ui/ImpactCounters';
+import Testimonial from '@/components/ui/Testimonial';
+import WorkProcess from '@/components/ui/WorProcess';
+
+
 
 const features = [
   {
@@ -117,8 +125,96 @@ const Index = () => {
   
   return (
     <>
+ <HeroSection />
+       
+    <section className="relative py-32 bg-[#FCFAF8] overflow-hidden">
+      {/* Refined Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-amber-100/40 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-stone-200/50 blur-[100px] rounded-full" />
+      </div>
 
-        <section className="relative min-h-[85vh] flex items-start pt-28 -mt-16 bg-[#fafaf9] overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header - Left Aligned for a more "Agency" look */}
+        <div className="max-w-4xl mb-24">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="text-amber-600 font-bold tracking-[0.2em] uppercase text-xs mb-4 block"
+          >
+            Our Solutions
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-serif text-amber-950 leading-[1.1] mb-8"
+          >
+            Everything You Need <br />
+            <span className="italic font-light text-stone-500">to Scale.</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-stone-600 text-xl max-w-xl leading-relaxed border-l-2 border-amber-500 pl-8"
+          >
+            A high-performance ecosystem engineered for local businesses to dominate their market and secure long-term capital growth.
+          </motion.p>
+        </div>
+
+        {/* Feature Grid - Using a 12-column layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
+              // Alternate column spans for a more dynamic grid (7 cols and 5 cols)
+              className={`${index % 3 === 0 ? "md:col-span-7" : "md:col-span-5"} group`}
+            >
+              <Link to={feature.link} className="block h-full">
+                <div className="relative h-full bg-white border border-stone-200 p-10 transition-all duration-500 group-hover:border-amber-400 group-hover:shadow-[0_20px_50px_rgba(180,83,9,0.05)]">
+                  
+                  {/* Step Numbering */}
+                  <span className="absolute top-10 right-10 text-stone-100 font-serif text-6xl transition-colors duration-500 group-hover:text-amber-50">
+                    0{index + 1}
+                  </span>
+
+                  <div className="relative z-10">
+                    {/* Icon Container */}
+                    <div className="w-16 h-16 mb-12 flex items-center justify-center bg-stone-50 border border-stone-100 transition-all duration-500 group-hover:bg-amber-500 group-hover:border-amber-500">
+                      <feature.icon className="w-7 h-7 text-amber-700 transition-colors duration-500 group-hover:text-white" />
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="text-2xl font-bold text-amber-950 mb-4 flex items-center gap-3">
+                      {feature.title}
+                      <ArrowRight className="w-5 h-5 text-amber-500 opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0" />
+                    </h3>
+                    
+                    <p className="text-stone-500 leading-relaxed text-lg max-w-md">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  {/* Bottom Line Accent */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-amber-500 transition-all duration-700 group-hover:w-full" />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Elegant Footer Line */}
+      <div className="mt-32 flex justify-center">
+        <div className="w-px h-24 bg-gradient-to-b from-amber-500 to-transparent" />
+      </div>
+    </section>
+  
+
+ <section className="relative min-h-[85vh] flex items-start pt-28 -mt-16 bg-[#fafaf9] overflow-hidden">
       <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
 
         {/* LEFT SIDE */}
@@ -226,75 +322,8 @@ const Index = () => {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-amber-500/70 to-transparent blur-[0.5px]" />
     </section>
 
-
-
-{/* Features Section */}
-<section className="relative pt-14 pb-28 bg-[#fafaf9] overflow-hidden">
-  <div className="container-wide">
-
-    {/* Heading – pulled upward */}
-    <div className="mb-14">
-      <SectionHeading
-        tag="Our Solutions"
-        title="Everything You Need to Grow"
-        description="A complete system designed specifically for local businesses to build lasting customer relationships and sustainable revenue."
-      />
-    </div>
-
-    {/* Decorative background glow */}
-    <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-200/30 blur-[140px] -z-10" />
-
-    {/* Feature Grid */}
-    <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-      {features.map((feature, index) => (
-        <Link to={feature.link} key={feature.title} className="group">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: index * 0.08 }}
-            className="
-              relative h-full
-              rounded-2xl
-              bg-white/70 backdrop-blur
-              border border-slate-200/60
-              p-7
-              transition-all duration-300
-              hover:-translate-y-1
-              hover:shadow-xl
-              hover:shadow-amber-900/10
-            "
-          >
-            {/* Glow on hover */}
-            <div className="absolute inset-0 rounded-2xl bg-amber-300/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-
-            <div className="relative flex items-start gap-5">
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-amber-100/70 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-amber-200">
-                <feature.icon className="w-6 h-6 text-amber-800" />
-              </div>
-
-              {/* Content */}
-              <div>
-                <h3 className="text-lg font-extrabold text-slate-900 mb-2 flex items-center gap-2">
-                  {feature.title}
-                  <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-                </h3>
-                <p className="text-slate-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </Link>
-      ))}
-    </div>
-  </div>
-
-  {/* Bottom divider (matches previous section) */}
-  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
-</section>
-
+<AssociateWithUs />
+<WorkProcess />
       {/* Process Section */}
       <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-wide">
@@ -350,6 +379,9 @@ const Index = () => {
         </div>
       </section>
 
+      <NumberSpeaksLouder />
+      <Testimonial />
+{/* <OwnerBenefits /> */}
       {/* CTA Section */}
       <section className="section-padding">
         <div className="container-wide">
